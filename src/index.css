@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Opcional: estilos base del “hola mundo” */
+:root { --bg: #0b0f17; }
+html, body, #root { height: 100%; }
+body { background: var(--bg); color: #e5e7eb; }
