@@ -1,12 +1,18 @@
+import Dashboard from "./pages/Dashboard";
+import TradesPage from "./pages/TradesPage";
+import { useState } from "react";
+
 export default function App() {
+  const [view, setView] = useState<"dashboard"|"trades">("dashboard");
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <div className="max-w-xl w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6">
-        <h1 className="text-2xl font-semibold">App de Inversiones — Hola mundo</h1>
-        <p className="text-sm text-white/70 mt-2">
-          Stack: React + Vite + TypeScript + Tailwind v4 (sin init).
-        </p>
-      </div>
+    <div>
+      <nav className="sticky top-0 bg-black/50 backdrop-blur border-b border-white/10">
+        <div className="max-w-5xl mx-auto p-3 flex gap-3">
+          <button className={`px-3 py-2 rounded-xl ${view==="dashboard"?"bg-white/10":""}`} onClick={()=>setView("dashboard")}>Dashboard</button>
+          <button className={`px-3 py-2 rounded-xl ${view==="trades"?"bg-white/10":""}`} onClick={()=>setView("trades")}>Operaciones</button>
+        </div>
+      </nav>
+      {view === "dashboard" ? <Dashboard/> : <TradesPage/>}
     </div>
   );
 }
